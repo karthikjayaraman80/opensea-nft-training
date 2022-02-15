@@ -15,7 +15,7 @@ contract NFT is ERC721 {
         baseTokenURI = "";
     }
     
-    function mintTo(address recipient)
+    function mintTo(address recipient, string memory tokenURI)
         public
         returns (uint256)
     {
@@ -23,7 +23,6 @@ contract NFT is ERC721 {
         uint256 newItemId = currentTokenId.current();
         _safeMint(recipient, newItemId);
         
-        string tokenURI = baseTokenURI + newItemId + ".json";
         _setTokenURI(newItemId, tokenURI);
         return newItemId;
     }
