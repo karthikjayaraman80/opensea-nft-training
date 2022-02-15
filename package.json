@@ -1,0 +1,35 @@
+{
+  "name": "opensea-nft-training",
+  "version": "1.0.0",
+  "description": "Training on Smart Contracts with OpenSea",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karthikjayaraman80/opensea-nft-training.git"
+  },
+  "keywords": [
+    "nft"
+  ],
+  "author": "karthikjayaraman80",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karthikjayaraman80/opensea-nft-training/issues"
+  },
+  "homepage": "https://github.com/karthikjayaraman80/opensea-nft-training#readme",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.5",
+    "@nomiclabs/hardhat-etherscan": "^3.0.1",
+    "ethers": "^5.0.0",
+    "hardhat": "^2.8.4",
+    "node-fetch": "^2.6.7"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.5.0",
+    "dotenv": "^16.0.0",
+    "solc-js": "^1.0.1",
+    "solidity": "0.0.1"
+  }
+}

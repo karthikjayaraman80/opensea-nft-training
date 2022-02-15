@@ -1,3 +1,6 @@
+artifacts
+solidity-files-cache.json
+
 # Logs
 logs
 *.log
