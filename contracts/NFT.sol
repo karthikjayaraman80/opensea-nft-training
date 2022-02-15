@@ -23,7 +23,7 @@ contract NFT is ERC721 {
         uint256 newItemId = currentTokenId.current();
         _safeMint(recipient, newItemId);
         
-        string tokenURI = baseTokenURI + newItemId + ".json"
+        string tokenURI = baseTokenURI + newItemId + ".json";
         _setTokenURI(newItemId, tokenURI);
         return newItemId;
     }
