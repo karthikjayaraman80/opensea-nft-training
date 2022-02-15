@@ -1,5 +1,6 @@
 artifacts
 solidity-files-cache.json
+ipfs-out
 
 # Logs
 logs
