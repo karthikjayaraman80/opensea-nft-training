@@ -18,8 +18,9 @@ contract NFT is ERC721, PullPayment, Ownable {
     string public baseTokenURI;
     mapping(address => bool) public whitelisted;
 
-    constructor() ERC721("NFTTutorial", "NFT") {
-        baseTokenURI = "ipfs://bafybeigmomt3xk7lpts6iykvksq35xvqaabkg47sio5nu3io6u3s4i22ay/metadata/";
+    constructor(string memory name, string memory symbol, string memory initBaseURI, uint256 mintAmount) ERC721 (name, symbol) {
+        baseTokenURI = initBaseURI;
+        mintMany(msg.sender, mintAmount);
     }
     
     function mint(address recipient) public payable returns (uint256) {
