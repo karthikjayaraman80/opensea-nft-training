@@ -5,8 +5,9 @@
  require("@nomiclabs/hardhat-ethers");
  require("./scripts/deploy.js");
  require("./scripts/mint.js");
+ require("@nomiclabs/hardhat-etherscan");
  
- const { ALCHEMY_KEY, ACCOUNT_PRIVATE_KEY } = process.env;
+ const { ALCHEMY_KEY, ACCOUNT_PRIVATE_KEY, ETHERSCAN_API_KEY } = process.env;
  
 
 //  const { TASK_COMPILE_SOLIDITY_GET_SOLC_BUILD } = require("hardhat/builtin-tasks/task-names");
@@ -46,4 +47,7 @@
        accounts: [`0x${ACCOUNT_PRIVATE_KEY}`]
      },
    },
+   etherscan: {
+    apiKey: ETHERSCAN_API_KEY,
+  },
  }
