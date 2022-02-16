@@ -13,7 +13,7 @@ contract NFT is ERC721, PullPayment, Ownable {
     string private constant NAME = "Test Whales";
     string private constant SYMBOL = "OTW";
     string private constant BASEURI = "ipfs://bafybeic6ocjsotksk5kuqiokvdpg27f6e73jlbrzyk4jun6xlnn42kov6e/";
-    uint256 private constant MINT_AMOUNT = 1_000;
+    uint256 private constant MINT_AMOUNT = 100;
     
     /// @dev Base token URI used as a prefix by tokenURI().
     string public baseTokenURI;
