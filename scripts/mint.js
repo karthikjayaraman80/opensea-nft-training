@@ -6,7 +6,18 @@ task("mint", "Mints from the NFT contract")
 .addParam("address", "The address to receive a token")
 .setAction(async function (taskArguments, hre) {
     const contract = await getContract("NFT", hre);
-    const transactionResponse = await contract.mintTo(taskArguments.address, {
+    const transactionResponse = await contract.mint(taskArguments.address, {
+        gasLimit: 500_000,
+    });
+    console.log(`Transaction Hash: ${transactionResponse.hash}`);
+});
+
+task("mint-many", "Mints multiple from the NFT contract")
+.addParam("address", "The address to receive a token")
+.addParam("number", "The number of tokens to mint")
+.setAction(async function (taskArguments, hre) {
+    const contract = await getContract("NFT", hre);
+    const transactionResponse = await contract.mintMany(taskArguments.address, taskArguments.number, {
         gasLimit: 500_000,
     });
     console.log(`Transaction Hash: ${transactionResponse.hash}`);
