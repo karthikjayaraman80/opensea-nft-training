@@ -10,10 +10,10 @@ contract NFT is ERC721, PullPayment, Ownable {
     uint256 public constant TOTAL_SUPPLY = 10_000;
     uint256 public constant MINT_PRICE = 0.08 ether;
     string private constant METADATA_EXT = ".json";
-    string private constant NAME = "Test Creatures";
-    string private constant SYMBOL = "OTC";
-    string private constant BASEURI = "ipfs://bafybeigmomt3xk7lpts6iykvksq35xvqaabkg47sio5nu3io6u3s4i22ay/metadata/";
-    uint256 private constant MINT_AMOUNT = 3;
+    string private constant NAME = "Test Whales";
+    string private constant SYMBOL = "OTW";
+    string private constant BASEURI = "ipfs://bafybeic6ocjsotksk5kuqiokvdpg27f6e73jlbrzyk4jun6xlnn42kov6e/";
+    uint256 private constant MINT_AMOUNT = 1_000;
     
     /// @dev Base token URI used as a prefix by tokenURI().
     string public baseTokenURI;
