@@ -6,41 +6,28 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/security/PullPayment.sol";
 
 contract NFT is ERC721, PullPayment, Ownable {
-    using Counters for Counters.Counter;
-    Counters.Counter private currentTokenId;
-    
     /// Constants
     uint256 public constant TOTAL_SUPPLY = 10_000;
     uint256 public constant MINT_PRICE = 0.08 ether;
     string private constant METADATA_EXT = ".json";
+    string private constant NAME = "Test Creatures";
+    string private constant SYMBOL = "OTC";
+    string private constant BASEURI = "ipfs://bafybeigmomt3xk7lpts6iykvksq35xvqaabkg47sio5nu3io6u3s4i22ay/metadata/";
+    uint256 private constant MINT_AMOUNT = 3;
     
     /// @dev Base token URI used as a prefix by tokenURI().
     string public baseTokenURI;
+    using Counters for Counters.Counter;
+    Counters.Counter private currentTokenId;
     mapping(address => bool) public whitelisted;
 
-    constructor(string memory name, string memory symbol, string memory initBaseURI, uint256 mintAmount) ERC721 (name, symbol) {
-        baseTokenURI = initBaseURI;
-        mintMany(msg.sender, mintAmount);
+    constructor() ERC721 (NAME, SYMBOL) {
+        setBaseTokenURI(BASEURI);
+        mint(msg.sender, MINT_AMOUNT);
     }
     
-    function mint(address recipient) public payable returns (uint256) {
-        uint256 tokenId = currentTokenId.current();
-        require(tokenId < TOTAL_SUPPLY, "Max supply reached");
-
-        if (msg.sender != owner()) {
-            if(whitelisted[msg.sender] != true) {
-                require(msg.value >= MINT_PRICE, "Transaction value is less than the mint price");
-            }
-        }
-        
-        currentTokenId.increment();
-        uint256 newItemId = currentTokenId.current();
-        _safeMint(recipient, newItemId);
-        return newItemId;
-    }
-
-    // public
-    function mintMany(address recipient, uint256 mintAmount) public payable {
+    /// public
+    function mint(address recipient, uint256 mintAmount) public payable {
         uint256 tokenId = currentTokenId.current();
         
         require(mintAmount > 0);
@@ -71,7 +58,7 @@ contract NFT is ERC721, PullPayment, Ownable {
     }
 
     /// @dev Sets the base token URI prefix.
-    function setBaseTokenURI(string memory _baseTokenURI) onlyOwner public {
+    function setBaseTokenURI(string memory _baseTokenURI) onlyOwner private {
       baseTokenURI = _baseTokenURI;
     }
 
