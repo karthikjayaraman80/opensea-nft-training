@@ -5,3 +5,7 @@ npm install @openzeppelin/contracts
 npm install dotenv --save
 npm install --save-dev ethers@^5.0.0
 npm install --save-dev node-fetch@2
+
+npm install --global yarn
+npm install opensea-js
+npm install web3-provider-engine
