@@ -4,6 +4,7 @@
  require('dotenv').config();
  require("@nomiclabs/hardhat-ethers");
  require("./scripts/deploy.js");
+ require("./scripts/sell.js");
  require("./scripts/mint.js");
  require("@nomiclabs/hardhat-etherscan");
  
@@ -34,6 +35,12 @@
 
  module.exports = {
     solidity: "0.8.1",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      }
+    },
     defaultNetwork: "rinkeby",
     networks: {
      hardhat: {},

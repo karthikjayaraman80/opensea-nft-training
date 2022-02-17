@@ -30,7 +30,10 @@
     "@openzeppelin/contracts": "^4.5.0",
     "dotenv": "^16.0.0",
     "ipfs-car": "^0.6.2",
+    "opensea-js": "^2.0.0",
     "solc-js": "^1.0.1",
-    "solidity": "0.0.1"
+    "solidity": "0.0.1",
+    "web3-provider-engine": "^16.0.3",
+    "yarn": "^1.22.17"
   }
 }

@@ -16,7 +16,7 @@ contract ProxyRegistry {
 
 contract NFT is ERC721, PullPayment, Ownable {
     /// Constants
-    uint256 public constant TOTAL_SUPPLY = 10_000;
+    uint256 public constant MAX_SUPPLY = 10_000;
     uint256 public constant MINT_PRICE = 0.08 ether;
     string private constant METADATA_EXT = ".json";
     uint256 private constant MINT_AMOUNT = 10;
@@ -29,17 +29,30 @@ contract NFT is ERC721, PullPayment, Ownable {
     address proxyRegistryAddress;
     
 
-    constructor(string memory _name, string memory _symbol, string memory _baseTokenURI) ERC721 (_name, _symbol) {
+    constructor(string memory _name, string memory _symbol, string memory _baseTokenURI, address _proxyRegistryAddress) ERC721 (_name, _symbol) {
         baseTokenURI = _baseTokenURI;
-        mint(msg.sender, MINT_AMOUNT);
+        proxyRegistryAddress = _proxyRegistryAddress;
+        // mint(msg.sender, MINT_AMOUNT);
     }
+
+    /**
+        @dev Returns the total tokens minted so far.
+     */
+    function totalSupply() public view returns (uint256) {
+        return currentTokenId.current();
+    }
+
+    function maxSupply() public pure returns (uint256) {
+        return MAX_SUPPLY;
+    }
+
     
     /// public
     function mint(address recipient, uint256 mintAmount) public payable {
         uint256 tokenId = currentTokenId.current();
         
         require(mintAmount > 0);
-        require(tokenId + mintAmount < TOTAL_SUPPLY, "Exceeds maximum supply");
+        require(tokenId + mintAmount < MAX_SUPPLY, "Exceeds maximum supply");
 
         if (msg.sender != owner()) {
             if(whitelisted[msg.sender] != true) {
